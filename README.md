@@ -2,6 +2,8 @@ Description
 ============
 This plugin is a "fork" from Shiguenori: http://www.shiguenori.com/material/jquery.contextMenu/
 
+See the online Demo here -> http://renanborges.com/wcontextmenu/
+
 Required: jQuery 1.5.1
 
 Lastest modifications:
