@@ -153,7 +153,6 @@
                         }
                         $(document).unbind('click').unbind('keypress');
                         $(".contextMenu").hide();
-                        // Callback
                         if (plugin.settings.select)
                         {
                             plugin.settings.select($(this).attr('href').substr(1),
@@ -258,6 +257,53 @@
             return false;
         });
 
+        var hideByTypes = function (el, selectedRowTypes, disable) {
+
+            el.each(function () {
+                for (var j = 0; j < selectedRowTypes.length; j++) {
+                    var rowType = selectedRowTypes[j];
+                    var menus = $(this).data('menu').find('a');
+
+                    for (var i = 0; i < menus.length; i++) {
+                        var menu = menus[i];
+                        var filter = $(menu).attr("typeFilter");
+                        if (!filter) {
+                            continue;
+                        }
+                        var filterItems = filter.split(',');
+
+                        if (filterItems.length == 1) {
+                            if (filter != rowType) {
+                                if (disable) {
+                                    $(menu).parent().addClass('disabled');
+                                }
+                                else {
+                                    $(menu).parent().hide();
+                                }
+
+                            }
+                        } else {
+                            var contains = false;
+                            for (var k = 0; k < filterItems.length; k++) {
+                                if (rowType == filterItems[k]) {
+                                    contains = true;
+                                    break;
+                                }
+                            }
+                            if (!contains) {
+                                if (disable) {
+                                    $(menu).parent().addClass('disabled');
+                                }
+                                else {
+                                    $(menu).parent().hide();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            return el;
+        };
 
         this.methods =
             {
@@ -284,65 +330,11 @@
                 },
 
                 disableItemsByTypes: function (selectedRowTypes) {
-                    this.hideItemsByTypes(selectedRowTypes, disable);
+                    hideByTypes($(this), selectedRowTypes, true);
                 },
-                hideItemsByTypes: function (selectedRowTypes, disable)
+                hideItemsByTypes: function (selectedRowTypes)
                 {
-                    $(this).each(function ()
-                    {
-                        for (var j = 0; j < selectedRowTypes.length; j++)
-                        {
-                            var rowType = selectedRowTypes[j];
-                            var menus = $(this).data('menu').find('a');
-
-                            for (var i = 0; i < menus.length; i++)
-                            {
-                                var menu = menus[i];
-                                var filter = $(menu).attr("typeFilter");
-                                if (!filter)
-                                {
-                                    continue;
-                                }
-                                var filterItems = filter.split(',');
-
-                                if (filterItems.length == 1)
-                                {
-                                    if (filter != rowType)
-                                    {
-                                        if (disable){
-                                            $(menu).parent().addClass('disabled');
-                                        }
-                                        else
-                                        {
-                                            $(menu).parent().hide();
-                                        }
-                                        
-                                    }
-                                } else
-                                {
-                                    var contains = false;
-                                    for (var k = 0; k < filterItems.length; k++)
-                                    {
-                                        if (rowType == filterItems[k])
-                                        {
-                                            contains = true;
-                                            break;
-                                        }
-                                    }
-                                    if (!contains)
-                                    {
-                                        if (disable) {
-                                            $(menu).parent().addClass('disabled');
-                                        }
-                                        else {
-                                            $(menu).parent().hide();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
-                    return $(this);
+                    hideByTypes($(this), selectedRowTypes, false);
                 },
 
                 showItems: function (o)
