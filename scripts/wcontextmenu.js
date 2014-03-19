@@ -1,7 +1,7 @@
 /*
     WContextmenu
     Project original by Shiguenori - http://www.shiguenori.com/material/jquery.contextMenu/
-    Version by Webbers - 0.1.0
+    Version by Webbers - 0.1.1
     Requeired: jQuery 1.5.1
 */
 (function ($)
@@ -18,7 +18,8 @@
                 outSpeed: 75,
                 menu: null,
                 select: null,
-                beforeOpen: function () { }
+                beforeOpen: function () { },
+                afterClose: function () { }
             };
 
         plugin.settings = $.extend({}, defaults, options);
@@ -168,6 +169,7 @@
                         {
                             $(document).unbind('click').unbind('keypress');
                             $menu.hide();
+                            plugin.settings.afterClose($element, mouseUpEvent);
                             return false;
                         });
                     }, 0);
