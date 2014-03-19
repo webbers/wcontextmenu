@@ -96,6 +96,9 @@
         		                    'X: ' + pos.x + '  Y: ' + pos.y + ' (relative to element)\n\n' +
             		                    'X: ' + pos.docX + '  Y: ' + pos.docY + ' (relative to document)'
 		                );
+                },
+                afterClose: function(){
+                    alert('after close the contextmenu callback');
                 }
             });
 
