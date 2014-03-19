@@ -1,6 +1,6 @@
 /*
     WContextmenu
-    Project original by Shiguenori - http://www.shiguenori.com/material/jquery.contextMenu/
+    Project original http://www.abeautifulsite.net/
     Version by Webbers - 0.1.0
     Requeired: jQuery 1.5.1
 */
