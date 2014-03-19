@@ -1,6 +1,6 @@
 Description
 ============
-This plugin is a "fork" from Shiguenori: http://www.shiguenori.com/material/jquery.contextMenu/
+This plugin is a "fork" from http://www.abeautifulsite.net/
 
 See the online Demo here -> http://renanborges.com/wcontextmenu/
 
