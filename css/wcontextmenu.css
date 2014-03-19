@@ -57,6 +57,11 @@
     background-color: #234B79;
 }
 
+.contextMenu .hasChildren.disabled
+{
+    background-image: url(../images/arrow-disabled.png);
+}
+
 .contextMenu LI.disabled A
 {
     color: #AAA !important;
