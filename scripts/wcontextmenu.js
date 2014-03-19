@@ -1,7 +1,7 @@
 /*
     WContextmenu
     Project original http://www.abeautifulsite.net/
-    Version by Webbers - 0.1.1
+    Version by Webbers - 0.1.2
     Requeired: jQuery 1.5.1
 */
 (function ($)
