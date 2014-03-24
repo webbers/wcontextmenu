@@ -157,7 +157,7 @@
                         {
                             plugin.settings.select($(this).attr('href').substr(1),
                                             $($element),
-                                            { x: x - offset.left, y: y - offset.top, docX: x, docY: y });
+                                            { x: x - offset.left, y: y - offset.top, docX: x, docY: y }, $(this));
                         }
                         return false;
                     });
