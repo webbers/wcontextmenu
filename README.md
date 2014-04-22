@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/webbers/wquerybuilder.svg?branch=master)](https://travis-ci.org/webbers/wquerybuilder)
 Description
 ============
 This plugin is a "fork" from http://www.abeautifulsite.net/
